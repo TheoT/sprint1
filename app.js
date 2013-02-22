@@ -6,7 +6,9 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , location = require('./routes/location')
   , http = require('http')
+  , mongoose = require('mongoose')
   , path = require('path');
 
 var app = express();
@@ -19,6 +21,7 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  mongoose.connect(process.env.MONGOLAB_URI || 'localhost');
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -29,7 +32,12 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-
+app.post('/loc/new/',location.newLoc)
+app.get('/loc/pop/',location.popDB)
+app.get('/loc/',location.locs)
+app.post('/loc/drop/',location.drop)
+app.get('/random/',location.getRandoLoc)
+app.get('/info/:name',location.locInfo)
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

@@ -1,5 +1,13 @@
 extends layout
 block content
-	h1 Hello Earth
-	div(id="map3d",style="height: 400px; width: 400px;")
-	button(class="btn btn-primary", id="spin") Spin
+	script(type="text/javascript", src="/javascripts/index.js")
+	h1 Spin The Globe
+	div(class="row")
+		div(class="span7")
+			div(id="map3d",style="height: 600px;padding: 10px 10px 10px 10px;")
+			center
+				button(class="btn btn-primary", id="spin",style="height: 50px; width: 120px;") 
+					h1 Spin
+		div(class="span5", id="locInfo",style="height: 600px;padding: 10px 10px 10px 10px;")
+			h1(id='placeTitle') Spin the globe to gain some knowledge!
+			p(id='placeInfo')
