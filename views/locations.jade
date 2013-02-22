@@ -1,0 +1,22 @@
+extends layout
+block content
+	script(type="text/javascript", src="/javascripts/admin.js")
+	h1 Location Admin
+	div(class="row")
+		div(class="span4 locAdmin")
+			form(method='post', action='/loc/new/')
+				h2 Name of Location
+				input(name='locName')
+				h2 Latitude
+				input(name='locLat')
+				h2 Longitude
+				input(name='locLong')
+				button(type='submit',class='btn btn-primary') Submit
+		div(class="span4")
+			button(class="btn btn-danger", id="clear") Drop DB
+			each loc in locs
+				div(class='locs locAdmin')
+					h3 #{loc.name}
+					h4 #{loc.lat},#{loc.lon}
+					p Random Pick: #{loc.rando}
+		
