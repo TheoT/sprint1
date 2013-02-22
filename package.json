@@ -10,7 +10,9 @@
     "jade": "*",
     "mongoose": "3.x",
     "fb": "0.1.0",
-    "request" :  "2.1.x"
+    "request" :  "2.1.x",
+    "cheerio" : "0.10.x"
+
   },
   "engines": {
     "node": "0.8.14 ",
